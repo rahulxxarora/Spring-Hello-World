@@ -34,9 +34,8 @@ public class IssueController {
         issueReport.setEmail(issueReportData.getEmail());
         issueReport.setIssue(issueReportData.getIssue());
 
-        IssueReport resp = this.issueRepository.save(issueReport);
-
-        Response response = new Response(issueReport.getEmail(), issueReport.getIssue(), 200);
+        IssueReport savedObject = this.issueRepository.save(issueReport);
+        Response response = new Response(savedObject.getId(), 200);
 
         return response;
     }
